@@ -1,0 +1,45 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "test", "last-checks"]
+      }
+    }
+  },
+  "namedInputs": {
+    "default": [
+      "{workspaceRoot}/pnpm-lock.yaml",
+      "{workspaceRoot}/tsconfig.shared.json",
+      "{projectRoot}/package.json",
+      "{projectRoot}/tsconfig.json"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "{workspaceRoot}/tsup.config.ts",
+        "{projectRoot}/index.{js,ts}",
+        "{projectRoot}/index.d.ts",
+        "{projectRoot}/lib/**",
+        "{projectRoot}/rollup.config.cjs"
+      ],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "test": {
+      "inputs": [
+        "default",
+        "{projectRoot}/test.ts",
+        "{projectRoot}/test/**",
+        "{projectRoot}/types.ts"
+      ],
+      "dependsOn": ["build"]
+    },
+    "last-checks": {
+      "inputs": ["default", "{projectRoot}/test.ts"],
+      "dependsOn": ["build", "^last-checks"]
+    }
+  }
+}
