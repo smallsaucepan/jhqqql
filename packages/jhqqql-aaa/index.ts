@@ -6,7 +6,7 @@
  * doAAA
  */
 function doAAA(num: number): boolean {
-  const keyword = "foo";
+  const keyword = "bar";
   console.log(keyword);
   return !isNaN(num);
 }
