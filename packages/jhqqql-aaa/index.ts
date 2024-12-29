@@ -3,7 +3,7 @@
  */
 
 /**
- * doAAA
+ * doAAA another minor change
  */
 function doAAA(num: number): boolean {
   const keyword = "bar";
