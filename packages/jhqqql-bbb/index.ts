@@ -3,7 +3,7 @@
  */
 
 /**
- * doAAA
+ * doAAA Some minor change.
  */
 function doBBB(num: number): boolean {
   const keyword = "yolo";
